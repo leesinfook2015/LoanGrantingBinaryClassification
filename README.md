@@ -8,10 +8,10 @@ This document is a step-by-step documentation of my attempts at this binary clas
 
 # Public training data
 
-I quickly explored teh public training set, entirely with the tools available in the azure ML studio. The public training data consists of approximately 77k datasets. One variable is the customer ID, which probably has little predictive value. Outcome variable is 'Loan status', with the two levels  'Fully repaid' and xx. The remainng columns are categorical/string and numerical variables, with unknown predictive power. I identified two columns with 14k missing values, these columns were 'Credit Score' and 'Annual income'. This exploration took approximately five minutes and identified the following action items:
+I quickly explored teh public training set, entirely with the tools available in the azure ML studio. The public training data consists of approximately 77k datasets. Two variables are laond and customer ID, which probably have little predictive value. Outcome variable is 'Loan status', with the two levels  'Fully repaid' and xx. The remainng columns are categorical/string and numerical variables, with unknown predictive power. I identified two columns with 14k missing values, these columns were 'Credit Score' and 'Annual income'. This exploration took approximately five minutes and identified the following action items:
 
 * Immediate: deal with missing values in 'Annual income' and 'Credit score'
-* Possibly: drop the customer ID (maybe - it may also be that single customers ahve several entries)
+* Possibly: drop loan and customer ID (maybe - it may also be that single customers ahve several entries)
 * Possibly: deal with string and categorical values
 * Possibly: scale variables (depending on the ML model)
 
