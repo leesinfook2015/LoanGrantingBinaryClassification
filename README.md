@@ -21,3 +21,12 @@ Initially, I tried to establish a very simple and non-optimized model as quickly
 
 This very simple initial model took me on place 12 in the public leaderboard with an accurac of 68.673% (admittedly, there were only 28 submissions at the time of entry). However, and more importantly, this simple model provides a fully functional base on which I can perform subsequent feature engineering, model tuning and general improvements of prediction.
 
+# LGBCD 1-missing-values-fixed
+After an exploratory data analysis (to be posted separately), I iterated the initial two-class boosted decision tree model experiment. Briefly, I inserted an 'Execute R script' module, which replaced Current Loan Amount values of 99999999 with NAs. In the following clean-missing-data module, the such flagged values were imputed using MICE with five iterations - just as Credit score and Annual income.
+
+In a further preprocessing step, we should deal with the Credit Score issue.
+
+
+
+
+Accuracy on test set: 70.893508, PL 36/144
