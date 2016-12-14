@@ -19,6 +19,7 @@ I quickly explored teh public training set, entirely with the tools available in
 
 Initially, I tried to establish a very simple and non-optimized model as quickly as possible, in order to get accustomed to the whole competition pipeline. I worked entirely in the AzureML studio, as provided by the free plan. I replaced missing values in the two columns using the 'MICE' algorithms and the default value of 5 iterations. I used a simple train/test split, stratified on the 'Loan status' column, and I trained a two-class boosted decision tree model with default setting. After training, I set up a predictive web service, inserted an 'Apply sql transformation' step and submitted the competition entry.
 
+(SQL: select "Loan ID" , "Scored Labels" as Status_Pred from t1;)
 This very simple initial model took me on place 12 in the public leaderboard with an accurac of 68.673% (admittedly, there were only 28 submissions at the time of entry). However, and more importantly, this simple model provides a fully functional base on which I can perform subsequent feature engineering, model tuning and general improvements of prediction.
 
 # LGBCD 1-missing-values-fixed
@@ -26,7 +27,22 @@ After an exploratory data analysis (to be posted separately), I iterated the ini
 
 In a further preprocessing step, we should deal with the Credit Score issue.
 
+The model with fixed missing values achieved an accuracy on the private test set of 70.893508, PL 36/144
+
+# LGBCD 1- missing-values-fixed-tuned
+The previous model was trained with default settings of the two-class boosted decision tree model
+
+CV accuracy: 0.872, AUC 0.835
+PL: 71.687587
+
+# LGBCD-2-missing-values-fixed-tuned-CSfix
+
+CV accuracy: 0.843, AUC: 0.742
+PL 71.694336 (32/278 at time of submission)
+
+I note that all our models appear to slightly overfit on the training data - CV accuracy is higher than accuracy on the test set. This indicates a need for more regularization, possibly.
 
 
+# To do: XGBoost
 
-Accuracy on test set: 70.893508, PL 36/144
+I am not sure how to get an xgboost model into azure ml. this needs research..
