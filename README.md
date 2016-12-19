@@ -42,7 +42,18 @@ PL 71.694336 (32/278 at time of submission)
 
 I note that all our models appear to slightly overfit on the training data - CV accuracy is higher than accuracy on the test set. This indicates a need for more regularization, possibly.
 
+# Update: LGBCD-7- fully trained
+
+I started working on the categorical features, and handled Years in Job, and Purpose (cut down to three indicator variables).
+Train/Test Acc 0.764, AUC 0.74
+PL 
+as of now, untuned.
+
+submitting competition entries is apparently not possible atm
 
 # To do: XGBoost
 
-I am not sure how to get an xgboost model into azure ml. this needs research..
+ON a parallel track, I am working with encouraging results with xgboost.
+handling pre-trained models in azure is a pain, though.
+
+
