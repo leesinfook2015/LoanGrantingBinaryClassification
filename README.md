@@ -57,3 +57,10 @@ ON a parallel track, I am working with encouraging results with xgboost.
 handling pre-trained models in azure is a pain, though.
 
 
+# LGBC 11, azure only.
+
+## Todo:
+
+* deal with duplicate loan IDs: should we average?? https://miteshgadgil.github.io/assets/Loan-Prediction-project/Data_Cleaning.html
+* fix monthly debt: remove leading \\$
+* fix maximum open credit
