@@ -61,6 +61,14 @@ handling pre-trained models in azure is a pain, though.
 
 ## Todo:
 
-* deal with duplicate loan IDs: should we average?? https://miteshgadgil.github.io/assets/Loan-Prediction-project/Data_Cleaning.html
+Status: 
+ACC = 0.833, AUC = 0.824
+
+* remove duplicate rows
+ACC = 0.823, AUC = 0.837
+
+
+* deal with duplicate loan IDs: investigate, (average columns, na.rm=T)?? https://miteshgadgil.github.io/assets/Loan-Prediction-project/Data_Cleaning.html  Split-apply-combine at its best! how the heck should I do this in Azure??
+
 * fix monthly debt: remove leading \\$
 * fix maximum open credit
