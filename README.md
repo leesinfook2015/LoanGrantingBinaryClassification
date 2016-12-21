@@ -19,7 +19,9 @@ I quickly explored teh public training set, entirely with the tools available in
 
 Initially, I tried to establish a very simple and non-optimized model as quickly as possible, in order to get accustomed to the whole competition pipeline. I worked entirely in the AzureML studio, as provided by the free plan. I replaced missing values in the two columns using the 'MICE' algorithms and the default value of 5 iterations. I used a simple train/test split, stratified on the 'Loan status' column, and I trained a two-class boosted decision tree model with default setting. After training, I set up a predictive web service, inserted an 'Apply sql transformation' step and submitted the competition entry.
 
-(SQL: select "Loan ID" , "Scored Labels" as Status_Pred from t1;)
+SQL: select "Loan ID" , "Scored Labels" as Status_Pred from t1;
+
+
 This very simple initial model took me on place 12 in the public leaderboard with an accurac of 68.673% (admittedly, there were only 28 submissions at the time of entry). However, and more importantly, this simple model provides a fully functional base on which I can perform subsequent feature engineering, model tuning and general improvements of prediction.
 
 # LGBCD 1-missing-values-fixed
@@ -49,7 +51,7 @@ Train/Test Acc 0.764, AUC 0.74
 PL 
 as of now, untuned.
 
-submitting competition entries is apparently not possible atm
+822, 851, PL
 
 # To do: XGBoost
 
@@ -65,10 +67,19 @@ Status:
 ACC = 0.833, AUC = 0.824
 
 * remove duplicate rows
-ACC = 0.823, AUC = 0.837
+ACC = 0.823, AUC = 0.837, PL=67
 
+## LGBC 12...
+save as .. was required because I could not update the predictive experiment.
+I'm back to using R scripts.
+
+* fix monthly debt: remove leading \\$, convert to numeric
+822,838,PL 41 WTF
+
+* purpose business loan
 
 * deal with duplicate loan IDs: investigate, (average columns, na.rm=T)?? https://miteshgadgil.github.io/assets/Loan-Prediction-project/Data_Cleaning.html  Split-apply-combine at its best! how the heck should I do this in Azure??
 
-* fix monthly debt: remove leading \\$
+we need to get down to 88910 unique loan ids
+
 * fix maximum open credit
