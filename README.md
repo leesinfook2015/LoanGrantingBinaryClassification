@@ -76,6 +76,7 @@ I'm back to using R scripts.
 * fix monthly debt: remove leading \\$, convert to numeric
 822,838,PL 41 WTF
 
+## LGBC 13
 * purpose business loan
 
 * deal with duplicate loan IDs: investigate, (average columns, na.rm=T)?? https://miteshgadgil.github.io/assets/Loan-Prediction-project/Data_Cleaning.html  Split-apply-combine at its best! how the heck should I do this in Azure??
@@ -92,5 +93,6 @@ df <- read.csv('LoansTrainingSetV2.csv') %>%
   group_by(Loan.ID) %>%
   filter(row_number()==1)
 ```
+This does the trick. fails in azure, though.
 
 * fix maximum open credit
