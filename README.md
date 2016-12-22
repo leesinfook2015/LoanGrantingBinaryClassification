@@ -99,11 +99,15 @@ This does the trick.
 We achieve groundbreaking 43.5% on PL.
 
 Addition of smote, 3fold CV
-ACC|AUC|tree tuning set |tree parameters ABCD
----|---|-------|---
-843| 921|| 20/10/0.2/100
-799|  880| A=(10,20)| 20/10/0.02/100
- || B=(,,)C=(0.1,0.2,0.4)|
+
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
+---|---|-------|---|---
+843| 921|| 20/10/0.2/100|
+799|  880| A=(10,20)| 20/10/0.02/100|
+ 859|932| B=(5,10,15)C=(0.1,0.2,0.4)|20/10/0.4/100|
+882|949|D=(50,100,200)|20/10/0.4/200|
+882|949|D=(50,100,200)|20/10/0.4/200|missing values imputation with mean (instead of mice)
+
 
 
 * fix maximum open credit
