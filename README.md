@@ -91,8 +91,19 @@ df <- read.csv('LoansTrainingSetV2.csv') %>%
   mutate(Purpose = as.factor(stringr::str_to_lower(Purpose))) %>%
   arrange(desc(Loan.ID), desc(Credit.Score)) %>%
   group_by(Loan.ID) %>%
-  filter(row_number()==1)
+  filter(row_number()==1) %>%
+  ungroup()
 ```
-This does the trick. fails in azure, though.
+This does the trick. 
+
+We achieve groundbreaking 43.5% on PL.
+
+Addition of smote, 3fold CV
+ACC|AUC|tree tuning set |tree parameters ABCD
+---|---|-------|---
+843| 921|| 20/10/0.2/100
+799|  880| A=(10,20)| 20/10/0.02/100
+ || B=(,,)C=(0.1,0.2,0.4)|
+
 
 * fix maximum open credit
