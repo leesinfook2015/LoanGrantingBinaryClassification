@@ -81,5 +81,16 @@ I'm back to using R scripts.
 * deal with duplicate loan IDs: investigate, (average columns, na.rm=T)?? https://miteshgadgil.github.io/assets/Loan-Prediction-project/Data_Cleaning.html  Split-apply-combine at its best! how the heck should I do this in Azure??
 
 we need to get down to 88910 unique loan ids
+```
+library(tidyverse)
+df <- read.csv('LoansTrainingSetV2.csv') %>%
+  distinct() %>%
+  mutate(CS.exceeded = ifelse(Credit.Score>1000, 1,0)) %>%
+  mutate(Credit.Score = ifelse(Credit.Score > 1000, Credit.Score/10, Credit.Score)) %>%
+  mutate(Purpose = as.factor(stringr::str_to_lower(Purpose))) %>%
+  arrange(desc(Loan.ID), desc(Credit.Score)) %>%
+  group_by(Loan.ID) %>%
+  filter(row_number()==1)
+```
 
 * fix maximum open credit
