@@ -108,6 +108,12 @@ ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
 882|949|D=(50,100,200)|20/10/0.4/200|
 882|949|D=(50,100,200)|20/10/0.4/200|missing values imputation with mean (instead of mice)
 
+## LGCB 14
+split _before_ fix of missing values
+
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
+---|---|-------|---|---
+855| 901|| 20/10/0.2/200|no pl yet
 
 
 * fix maximum open credit
