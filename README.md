@@ -127,7 +127,9 @@ If this fails, I will have to dbug my R script step by step.
 
 ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
 ---|---|-------|---|---
-855| 901|| 20/10/0.2/200|
+||| 20/10/0.2/200| ; without left_join; I cannot submit, wtf
+||| 20/10/0.2/200| ; with left_join
+
 
 
 
