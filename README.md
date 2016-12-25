@@ -119,3 +119,13 @@ ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
 
 ratio added
 * fix maximum open credit
+
+## lgbc 16
+
+started out with a completely new script.
+If this fails, I will have to dbug my R script step by step.
+
+ideas:
+
+a prediction for each single row in the test data would make sense.
+one might have to join th epredictions on the original, uncleaned dataset (left join(original data, data, by = 'loan ID')
