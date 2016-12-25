@@ -149,3 +149,22 @@ todo:
 
 * feature selection: Reduce high (?) variance
 
+## lgbc 17 
+
+could not submit previous web service.
+
+17 is a copy from lgbc 1
+
+started out with a completely new script.
+If this fails, I will have to dbug my R script step by step.
+
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
+---|---|-------|---|---
+||| 20/10/0.2/200|failed: internal error, which has to do with the credit score column
+||| 20/10/0.2/200| ; with left_join
+
+
+todo:
+
+* ln transform
+* sql left join
