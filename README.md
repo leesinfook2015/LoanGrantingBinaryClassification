@@ -125,7 +125,25 @@ ratio added
 started out with a completely new script.
 If this fails, I will have to dbug my R script step by step.
 
-ideas:
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
+---|---|-------|---|---
+855| 901|| 20/10/0.2/200|
 
-a prediction for each single row in the test data would make sense.
-one might have to join th epredictions on the original, uncleaned dataset (left join(original data, data, by = 'loan ID')
+
+
+todo:
+
+* DONE home ownership: two categories can be merged
+
+* DONE years in current job: conversion
+
+* DONE: months since last delinquent: type conversion; contains many missing values
+
+* DONE Tax liens: type conversion
+
+* DONE bankruptcies: type conversion
+
+* a prediction for each single row in the test data would make sense. one might have to join th epredictions on the original, uncleaned dataset (left join(original data, data, by = 'loan ID')
+
+* feature selection: Reduce high (?) variance
+
