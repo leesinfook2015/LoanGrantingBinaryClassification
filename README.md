@@ -166,7 +166,7 @@ switching to imputation with mean did help
 ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
 ---|---|-------|---|---
 ||| 20/10/0.2/200|failed: internal error, which has to do with the credit score column
-||| 20/10/0.2/200|70.2 ; back in business. Now continue with all previous steps. one at time. Next: check ACC AUC from this model.
+|814|761| 20/10/0.2/200|70.2 ; back in business. Now continue with all previous steps. one at time. Next: check ACC AUC from this model.
 
 
 todo:
