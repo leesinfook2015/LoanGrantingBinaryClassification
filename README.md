@@ -194,7 +194,26 @@ switching to imputation with mean did help
 ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
 ---|---|-------|---|---
 ||| 20/10/0.2/200|failed: internal error, which has to do with the credit score column
-|814|761| 20/10/0.2/200|70.2 ; back in business. Now continue with all previous steps. one at time. Next: check ACC AUC from this model.
+|814|761| 20/10/0.2/200||70.2 ; back in business. Now continue with all previous steps. one at time. Next: check ACC AUC from this model.
+|813|762| 20/10/0.2/200||step 1
+|813|764||step 2
+|782|792|| step 3: duplicate loan IDs fix: remember left_join!
+|782|792|| step 4: distinct. no change, covered by previous step. really.
+|776|792|| step 5; no improvement - dumped again. 
+|793||804| step 6 : annual income/monthly debt ratio; ha we keep that one
+
+off to lgbc 18 - I can't update teh 17 predictive model.
+
+## lgbc 18
+
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
+---|---|-------|---|---
+||| 20/10/0.2/200|71.377 + income debt ratio missing value filling;  still back in business. hoooray
+
+
+I still need to implement the left join - I need kind of a fork node.
+also, I am not using ln transformations. binnning for ratios (and additioanl ratios) would help, too.
+
 
 
 todo:
