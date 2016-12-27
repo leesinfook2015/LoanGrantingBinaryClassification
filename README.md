@@ -124,6 +124,34 @@ ratio added
 
 started out with a completely new script.
 If this fails, I will have to dbug my R script step by step.
+```
+df <- dataset1 %>%
+    mutate(`Monthly Debt`= stringr::str_replace(`Monthly Debt`,"\\$","")) %>%
+    mutate(`Monthly Debt`= as.numeric(`Monthly Debt`)) %>%
+    mutate(`Months since last delinquent`= as.numeric(`Months since last delinquent`)) %>%
+    mutate(`Tax Liens`= as.numeric(`Tax Liens`)) %>%
+    mutate(`Maximum Open Credit`=as.numeric(`Maximum Open Credit`)) %>%
+    distinct() %>%
+    mutate("Years in current job" = stringr::str_replace(`Years in current job`, 
+    ' years*','')) %>%
+    mutate("Years in current job" = stringr::str_replace(`Years in current job`, 
+    '\\+',''))%>%
+    mutate("Years in current job" =  stringr::str_replace(`Years in current job`, 
+    '< 1','0')) %>%
+    mutate("Years in current job" = as.numeric(`Years in current job`))%>%
+    mutate(Bankruptcies = as.numeric(Bankruptcies)) %>%
+    mutate(CS.exceeded = ifelse(`Credit Score`>1000, T,F)) %>%
+    mutate(`Credit Score` = ifelse(`Credit Score` > 1000, `Credit Score`/10, `Credit Score`)) %>%
+    mutate(Current.Loan.Amount.nan =ifelse(`Current Loan Amount`==99999999,T,F))%>%
+    mutate(`Current Loan Amount` =ifelse(`Current Loan Amount`==99999999,NA,`Current Loan Amount`))%>%    
+    mutate(Purpose = as.factor(stringr::str_to_lower(Purpose))) %>%
+    mutate(`Home Ownership`=ifelse(`Home Ownership`=='HaveMortgage', 'Home Mortgage',`Home Ownership`)) %>%
+    arrange(desc(`Loan ID`), desc(`Credit Score`)) %>%
+    group_by(`Loan ID`) %>%
+    filter(row_number()==1) %>%
+    ungroup() %>%
+    mutate(Income.Debt.Ratio= `Annual Income`/`Monthly Debt`)
+```
 
 ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
 ---|---|-------|---|---
