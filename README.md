@@ -158,13 +158,18 @@ could not submit previous web service.
 started out with a completely new script.
 If this fails, I will have to dbug my R script step by step.
 
+debugging with the test interface
+
+switching to imputation with mean did help
+
+
 ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
 ---|---|-------|---|---
 ||| 20/10/0.2/200|failed: internal error, which has to do with the credit score column
-||| 20/10/0.2/200| ; with left_join
+||| 20/10/0.2/200|70.2 ; back in business. Now continue with all previous steps. one at time. Next: check ACC AUC from this model.
 
 
 todo:
-
+* conversions from 16 etc
 * ln transform
 * sql left join
