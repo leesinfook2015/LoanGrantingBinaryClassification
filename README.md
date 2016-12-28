@@ -222,8 +222,13 @@ ACC|AUC|tree tuning set |tree parameters ABCD| PL acc|
 748|746|20,10,0.2,100| | log transforms
 737|740|20,10,0.2,200| |hm. back to 100
 737|740|20,10,0.2,200| |hm. minimum leaves?
-740|741|20,5,0.2,200| | time for a sub mission
+759|773|20,5,0.2,200| | filter selection: top 10 F WScore; numerical output from group bin thing
+759|773|20,5,0.2,200| | filter selection: top 10 F WScore; numerical output from group bin thing;  left join also
+
+
+
 todo:
 * conversions from 16 etc
-* ln transform
 * sql left join
+* tune the silly model
+* binning?
