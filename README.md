@@ -208,14 +208,21 @@ off to lgbc 18 - I can't update teh 17 predictive model.
 
 ACC|AUC|tree tuning set |tree parameters ABCD| PL acc
 ---|---|-------|---|---
-||| 20/10/0.2/200|71.377 + income debt ratio missing value filling;  still back in business. hoooray
+783|793|| 20/10/0.2/200|71.377 + income debt ratio missing value filling;  still back in business. hoooray
+
 
 
 I still need to implement the left join - I need kind of a fork node.
 also, I am not using ln transformations. binnning for ratios (and additioanl ratios) would help, too.
 
 
-
+## lgbc 19
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc|
+---|---|-------|---|---
+748|746|20,10,0.2,100| | log transforms
+737|740|20,10,0.2,200| |hm. back to 100
+737|740|20,10,0.2,200| |hm. minimum leaves?
+740|741|20,5,0.2,200| | time for a sub mission
 todo:
 * conversions from 16 etc
 * ln transform
