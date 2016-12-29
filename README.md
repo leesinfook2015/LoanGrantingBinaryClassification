@@ -225,6 +225,35 @@ ACC|AUC|tree tuning set |tree parameters ABCD| PL acc|
 759|773|20,5,0.2,200| | filter selection: top 10 F WScore; numerical output from group bin thing
 759|773|20,5,0.2,200| | filter selection: top 10 F WScore; numerical output from group bin thing;  left join also
 
+competition entry failed with a complaint about missing features (leaving me clueless)
+
+the error can also be observed in the web service test, even with sample data. Debugging requires a paid Azure acount, though.
+left join drops accuracy to 0 (!!)
+
+## lgbc 20
+
+we try the same model once more. 
+I have removed the 'feature selection step' from the predictive model. maybe that caused the issue...
+
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc|comment|
+---|---|-------|---|---|---
+759|773|20,5,0.2,200| |71.88 | FS removed from predictive experiment. top, for now
+
+
+## lgbc 20
+
+
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc|comment|
+---|---|-------|---|---|---
+760|773|20,5,0.2,200| | | group bins removed
+774|779||20,5,0.05,200||| lowered learning rate
+774|779||20,5,0.01,200||| lowered learning rate. no effect, back to .05
+771|778||20,5,0.05,200||| increased tree number. no effect, back to 200.
+
+predictive experiment fails with some kind of infinty error. I recall vaguely, that this is why I introduced the group binning thingy.
+somehow I need to exclude division by zero. simple solution: invert the ratios.
+
+
 
 
 todo:
