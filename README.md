@@ -255,9 +255,105 @@ somehow I need to exclude division by zero. simple solution: invert the ratios.
 
 
 
+## lgbc 21
 
+objectives: 
+* to invert the ratios
+* to insert a proper left join
+
+ACC|AUC|tree tuning set |tree parameters ABCD| PL acc|comment|
+---|---|-------|---|---|---
+774| 779 |||start out|
+772|779|||ratios inverted, annual income missing column added (appears to be important)|
+772|779||| Max Open Credit converted to numeric, log, 
+773|779|20 5 0.01 500|| Max Open Credit converted to numeric, log, 
+776|784|||| Max Open Credit inf and nan replaced with na (realized only after sql transform)
+776|784|20 5 0.01 500|| 72.60| Max Open Credit inf and nan replaced with na (realized only after sql transform)
+YAY we have a winner, for now! PL # 54, two behind Rene Petz!
+
+776|784|20 5 0.01 500|| *0* | lgbc 19, predictive + left join, left join fixed in R, worked fine in WS test; I give this path up...
+
+
+my final cleaning code:
+```
+df1 <- maml.mapInputPort(1) # class: data.frame
+
+print(names(df1))
+
+library("dplyr")
+library("magrittr")
+
+#df2 <- select(df1, `Loan ID`)
+df1 <- df1 %>%
+    mutate(Current.Loan.Amount.exceeded = ifelse(`Current Loan Amount`==99999999, 
+    T, F)) %>%
+    mutate(`Current Loan Amount` = ifelse(`Current Loan Amount`==99999999, 
+    NA, `Current Loan Amount`)) %>%
+    mutate(Credit.Score.exceeded = ifelse(`Credit Score`>1000, 
+    T, F)) %>%
+    mutate(Annual.Income.missing = ifelse(is.na(`Annual Income`), T, F)) %>%
+    mutate(`Credit Score` = as.numeric(ifelse(`Credit Score`>1000, 
+    `Credit Score`/10, `Credit Score`))) %>%
+    mutate(`Monthly Debt`= stringr::str_replace(`Monthly Debt`,"\\$","")) %>% #step 1
+    mutate(`Monthly Debt`= as.numeric(`Monthly Debt`)) %>%
+    mutate(Purpose = as.factor(stringr::str_to_lower(Purpose))) %>% #step 2
+    mutate(`Home Ownership`=ifelse(`Home Ownership`=='HaveMortgage', 'Home Mortgage',`Home Ownership`)) %>%
+    arrange(desc(`Loan ID`), desc(`Credit Score`)) %>% #step 3
+    group_by(`Loan ID`) %>%#step 3
+    filter(row_number()==1) %>%#step 3
+    ungroup()%>%#step 3
+    mutate(Debt.Income.Ratio= `Monthly Debt`/`Annual Income`) %>%
+    mutate(Amount.Income.Ratio = `Current Loan Amount`/`Annual Income`) %>%
+    mutate(`Annual Income`=log(`Annual Income`)) %>% # step 19-1
+    mutate(`Current Loan Amount`=log(`Current Loan Amount`)) %>%
+    mutate(`Maximum Open Credit`= log(as.numeric(`Maximum Open Credit`))) %>%
+    mutate(`Maximum Open Credit` = ifelse(is.infinite(`Maximum Open Credit`), NA, `Maximum Open Credit`)) %>%
+    mutate(`Maximum Open Credit` = ifelse(is.nan(`Maximum Open Credit`), NA, `Maximum Open Credit`)) %>%
+    #mutate(`Current Credit Balance`= log(`Current Credit Balance`)) %>%
+    #mutate(`Monthly Debt`= log(`Monthly Debt`))
+    #mutate("Years in current job" = stringr::str_replace(`Years in current job`, 
+    #' years*','')) %>%
+    #mutate("Years in current job" = stringr::str_replace(`Years in current job`, 
+    #'\\+',''))%>%
+    #mutate("Years in current job" =  stringr::str_replace(`Years in current job`, 
+    #'< 1','0')) %>%
+    #mutate("Years in current job" = as.numeric(`Years in current job`))%>%
+    mutate(Bankruptcies = as.numeric(Bankruptcies))
+
+    
+    
+    # 
+# for now, we exclude the wrongly coded credit scores.
+# later, we divide those by 10
+#df1 <- filter(df1, `Credit Score`< 1000)
+maml.mapOutputPort("df1");
+
+```
 todo:
-* conversions from 16 etc
+
 * sql left join
 * tune the silly model
-* binning?
+
+
+## lgbc 22
+
+objectives: 
+* to train using cross validation / tune hyper parameters
+* to tune sensibly (follow e.g. https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/)
+
+we cannot follow the tuning  guide directly, since we have only maximum number leaves per tree and minimum samples per leaf node.
+
+the former encompasses probably max_depth
+
+ACC|AUC|tree tuning set | PL acc|comment|
+---|---|-------|---|---|---
+784|796||20/50/0.1/40|| switched to 5 fold cross validation, tune hyperparameters, entire grid; 20/30/40/60/80
+784|796||20/50/0.1/40|| max number of leaves, 5,10, 20, 40, 60, 80, 100; fine. next: decrease learning rate, increase # trees
+783|796||20/200/0.1/40|| max number of leaves, 5,10, 20, 40, 60, 80, 100; fine. next: 
+798|831||20/200/0.51/80|| max number of leaves, 5,10, 20, 40, 60, 80, 100; silly large LR. One more, maybe?
+784|796||20/200/0.05/80|| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. More trees!
+783|795||20/200/0.02/160|| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. More trees!
+785|801||20/200/0.02/320|| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. Time for submission, to prevent overfitting.
+
+
+
