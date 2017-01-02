@@ -361,15 +361,39 @@ objective:
 
 * to evaluate bayes point machines
 * to evaluate stacking/averaging
+
 ACC|AUC|tree tuning set | PL acc|comment|
 ---|---|-------|---|---|---
 773|768|||30 training iterations
 774|771|||90 training iterations
 
+we give up on stacking, for now. 
 
 ## lgbc 24
 
 objective:
 
-* to introduce current loan amount ratios
+* to deal with imbalance, otherwise like 22
 
+ACC|AUC|tree tuning set | PL acc|comment|
+---|---|-------|---|---|---
+719|801|20/200/0.02/320||smote, 100%, on the feature-selected data
+732|822|40/200/0.02/320||smote, 100%, on the feature-selected data
+741|832|60/200/0.02/320|| see above
+748|839|70/100/0.02/320|68 something| overfitting? Time for a submission.
+
+Apparently, smote does work fine on the training data, but is of little use for the silly test data.
+
+## lgbc 25
+
+ACC|AUC|tree tuning set | PL acc|comment|
+---|---|-------|---|---|---
+788|807|30/100/0.02/320||
+788|807|30/100/0.02/320|| log(debt.amount.ratio), cleaned
+788|807|30/100/0.02/320|| no change. extend feature selection
+788|809|30/100/0.02/320|| impute with median!
+788|809|30/100/0.02/320|72.6881| submission...
+
+
+* to engineer the ratio features
+* smote does not help: discard
