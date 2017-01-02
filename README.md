@@ -347,13 +347,29 @@ the former encompasses probably max_depth
 
 ACC|AUC|tree tuning set | PL acc|comment|
 ---|---|-------|---|---|---
-784|796||20/50/0.1/40|| switched to 5 fold cross validation, tune hyperparameters, entire grid; 20/30/40/60/80
-784|796||20/50/0.1/40|| max number of leaves, 5,10, 20, 40, 60, 80, 100; fine. next: decrease learning rate, increase # trees
-783|796||20/200/0.1/40|| max number of leaves, 5,10, 20, 40, 60, 80, 100; fine. next: 
-798|831||20/200/0.51/80|| max number of leaves, 5,10, 20, 40, 60, 80, 100; silly large LR. One more, maybe?
-784|796||20/200/0.05/80|| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. More trees!
-783|795||20/200/0.02/160|| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. More trees!
-785|801||20/200/0.02/320|| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. Time for submission, to prevent overfitting.
+784|796|20/50/0.1/40|| switched to 5 fold cross validation, tune hyperparameters, entire grid; 20/30/40/60/80
+784|796|20/50/0.1/40|| max number of leaves, 5,10, 20, 40, 60, 80, 100; fine. next: decrease learning rate, increase # trees
+783|796|20/200/0.1/40|| max number of leaves, 5,10, 20, 40, 60, 80, 100; fine. next: 
+798|831|20/200/0.51/80|| max number of leaves, 5,10, 20, 40, 60, 80, 100; silly large LR. One more, maybe?
+784|796|20/200/0.05/80|| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. More trees!
+783|795|20/200/0.02/160|| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. More trees!
+785|801|20/200/0.02/320|72.57| max number of leaves, 5,10, 20, 40, 60, 80, 100; hm. Time for submission, to prevent overfitting.
+
+## lgbc 23
+
+objective:
+
+* to evaluate bayes point machines
+* to evaluate stacking/averaging
+ACC|AUC|tree tuning set | PL acc|comment|
+---|---|-------|---|---|---
+773|768|||30 training iterations
+774|771|||90 training iterations
 
 
+## lgbc 24
+
+objective:
+
+* to introduce current loan amount ratios
 
