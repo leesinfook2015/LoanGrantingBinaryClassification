@@ -394,6 +394,9 @@ ACC|AUC|tree tuning set | PL acc|comment|
 788|809|30/100/0.02/320|| impute with median!
 788|809|30/100/0.02/320|72.6881| submission...
 
+## lgbc 26
+
+790|810|30/100/0.02/320|72.6881| more features used
 
 * to engineer the ratio features
 * smote does not help: discard
