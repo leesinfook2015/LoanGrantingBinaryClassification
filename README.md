@@ -400,3 +400,12 @@ ACC|AUC|tree tuning set | PL acc|comment|
 
 * to engineer the ratio features
 * smote does not help: discard
+## lgbc 27
+
+with loan ID
+
+
+ACC|AUC|tree tuning set | PL acc|comment|
+---|---|-------|---|---|---
+831|888|30/100/0.02/320|72.6881| lid4, binned in two groups # lots of missings
+792|815|| lid 2,3,4, na filled with median, 19 features
