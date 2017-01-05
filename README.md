@@ -412,4 +412,12 @@ ACC|AUC|tree tuning set | PL acc|comment|
 831|888|30/100/0.02/320|72.6881| lid4, binned in two groups # lots of missings
 792|815|| lid 2,3,4, na filled with median, 19 features
 792|817||lid234, no nans, 19 features
-793|817||lid234,cid234, nonans, 19features; waiting until scoring is up again.
+793|817||72.638|lid234,cid234, nonans, 19features; 
+
+## lgbc 28
+
+with customer ID
+
+ACC|AUC|tree tuning set | PL acc|comment|
+---|---|-------|---|---|---
+|||
