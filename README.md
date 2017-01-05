@@ -396,10 +396,12 @@ ACC|AUC|tree tuning set | PL acc|comment|
 
 ## lgbc 26
 
-790|810|30/100/0.02/320|72.6881| more features used
+790|810|30/100/0.02/320|72.6279| more features used
 
-* to engineer the ratio features
-* smote does not help: discard
+another submission may be required
+
+
+
 ## lgbc 27
 
 with loan ID
@@ -410,3 +412,4 @@ ACC|AUC|tree tuning set | PL acc|comment|
 831|888|30/100/0.02/320|72.6881| lid4, binned in two groups # lots of missings
 792|815|| lid 2,3,4, na filled with median, 19 features
 792|817||lid234, no nans, 19 features
+793|817||lid234,cid234, nonans, 19features; waiting until scoring is up again.
