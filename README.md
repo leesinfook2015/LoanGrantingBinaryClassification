@@ -424,4 +424,8 @@ ACC|AUC|tree tuning set | PL acc|comment|
 
 
 ## 29
-820 840
+820 840 72.972
+
+## 30
+
+a little tree tuning: reduced number of trees, shoud generalize better
