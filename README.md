@@ -269,12 +269,13 @@ ACC|AUC|tree tuning set |tree parameters ABCD| PL acc|comment|
 773|779|20 5 0.01 500|| Max Open Credit converted to numeric, log, 
 776|784|||| Max Open Credit inf and nan replaced with na (realized only after sql transform)
 776|784|20 5 0.01 500|| 72.60| Max Open Credit inf and nan replaced with na (realized only after sql transform)
-YAY we have a winner, for now! PL # 54, two behind Rene Petz!
+
+YAY we have a winner, for now! PL # 54
 
 776|784|20 5 0.01 500|| *0* | lgbc 19, predictive + left join, left join fixed in R, worked fine in WS test; I give this path up...
 
 
-my final cleaning code:
+my current cleaning code:
 ```
 df1 <- maml.mapInputPort(1) # class: data.frame
 
@@ -320,11 +321,6 @@ df1 <- df1 %>%
     #mutate("Years in current job" = as.numeric(`Years in current job`))%>%
     mutate(Bankruptcies = as.numeric(Bankruptcies))
 
-    
-    
-    # 
-# for now, we exclude the wrongly coded credit scores.
-# later, we divide those by 10
 #df1 <- filter(df1, `Credit Score`< 1000)
 maml.mapOutputPort("df1");
 
@@ -424,7 +420,9 @@ ACC|AUC|tree tuning set | PL acc|comment|
 
 
 ## 29
-820 840 72.972
+ACC|AUC|tree tuning set | PL acc|comment|
+---|---|-------|---|---|---
+820| 840| | 72.972|winner model, so far
 
 ## 30
 
